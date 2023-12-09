@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\RecipeList;
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [VisitorController::class, 'hero'])->name('hero');
 });
+
+Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('login.google');
+Route::get('auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
 
 
 Route::middleware([

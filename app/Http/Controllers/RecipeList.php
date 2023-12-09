@@ -14,7 +14,7 @@ class RecipeList extends Controller
         if (auth()->check()) {
             // User is authenticated, show the full page
             $popularRecipe = Http::withToken(config('services.tmdb.token'))
-                ->get('https://www.themealdb.com/api/json/v1/1/search.php?f=b')
+                ->get('https://www.themealdb.com/api/json/v1/1/search.php?s=chicken')
                 ->json()['meals'];
 
             $category = Http::withToken(config('services.tmdb.token'))
@@ -63,6 +63,7 @@ class RecipeList extends Controller
             ->json();
 
         $recipeImage = isset($recipe['meals'][0]['strMealThumb']) ? $recipe['meals'][0]['strMealThumb'] : null;
+        $instruction = isset($recipe['meals'][0]['strInstructions']) ? $recipe['meals'][0]['strInstructions'] : null;
 
         // Fetch ingredient images
         $ingredientImages = [];
@@ -82,6 +83,7 @@ class RecipeList extends Controller
                 'recipe' => [
                     'strMealThumb' => $recipeImage,
                     'ingredientImages' => $ingredientImages,
+                    'instructions' => $instruction,
                     'strMeal' => isset($recipe['meals'][0]['strMeal']) ? $recipe['meals'][0]['strMeal'] : null,
                 ],
             ]

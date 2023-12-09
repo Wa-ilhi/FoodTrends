@@ -32,16 +32,21 @@
             </div>
             <br>
             <br>
-            <div class="row">
-                <h4 class="text-center text-uppercase">Instructions</h4>
-                <hr>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam magnam quam itaque molestiae, nobis ipsam quas illo quod ex amet molestias architecto officiis, voluptate alias libero odio assumenda quo fugit?
+
+        </div>
+        <div class="col">
+            <h4 class="text-center text-uppercase justify-center">Instructions</h4>
+            <hr>
+            <div class="col-12">
+                <div class="ingredient text-center">
+                    <p>{{ $recipe['instructions'] }}</p>
+                </div>
             </div>
         </div>
-
     </div>
+    <hr>
     <br>
-    <footer class="text-start" style="font-size: 14px;">
+    <footer class="text-center" style="font-size: 14px;">
         <p>Made with ❤️ by: FoodTrends &copy; <?php echo date('Y'); ?></p>
     </footer>
 </div>
