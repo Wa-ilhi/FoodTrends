@@ -1,0 +1,36 @@
+# Build settings
+[build]
+  # The directory to change to before starting a build
+  base = "public"
+  # The command to build the project
+  command = "php index.php"
+  # Functions directory (if you have serverless functions)
+  functions = "functions"
+
+# Deployment settings
+[build.environment]
+  # Specify the PHP version
+  PHP_VERSION = "8.1"
+
+# Redirects and rewrites
+[[redirects]]
+  from = "/*"
+  to = "/index.php/:splat"
+  status = 200
+
+# Asset optimization and settings
+[build.processing]
+  # Specify asset optimization settings if needed
+
+# Headers settings
+[[headers]]
+  # Define headers, such as for security policies
+  # For example, Content Security Policy (CSP) header
+  for = "/*"
+    [headers.values]
+      Content-Security-Policy = "default-src 'self';"
+
+# Basic server settings
+[dev]
+  # Specify the port for local development server
+  port = 8000
