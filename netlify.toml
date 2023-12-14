@@ -2,7 +2,7 @@
 [build]
   base = "/opt/build/repo/public"
   publish = "/opt/build/repo/public"
-  command = "php index.php
+  command = "php index.php"
   functions = "functions"
 
 # Deployment settings
