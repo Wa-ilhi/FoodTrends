@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\RecipeList;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,4 +40,6 @@ Route::middleware([
     })->name('profile');
     Route::get('/recipe', [RecipeList::class, 'index'])->name('recipe.index');
     Route::get('/recipe/{recipe}', [RecipeList::class, 'show'])->name('recipe.show');
+
+    Route::get('/search', [SearchController::class, 'index']);
 });

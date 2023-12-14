@@ -21,18 +21,26 @@ class GoogleAuthController extends Controller
             $user = User::where('google_id', $google_user->getId())->first();
 
             if (!$user) {
-                $new_user = User::create([
-                    'name' => $google_user->getName(),
-                    'email' => $google_user->getEmail(),
-                    'google_id' => $google_user->getId()
-                ]);
+                // Check if user already exists by email
+                $existingUser = User::where('email', $google_user->getEmail())->first();
 
-                Auth::login($new_user);
+                if ($existingUser) {
+                    // User already exists, log them in
+                    Auth::login($existingUser);
+                } else {
+                    // Create a new user
+                    $new_user = User::create([
+                        'name' => $google_user->getName(),
+                        'email' => $google_user->getEmail(),
+                        'google_id' => $google_user->getId()
+                    ]);
+
+                    Auth::login($new_user);
+                }
 
                 return redirect()->intended('/recipe');
             } else {
                 Auth::login($user);
-
                 return redirect()->intended('/recipe');
             }
         } catch (\Throwable $th) {
@@ -43,7 +51,6 @@ class GoogleAuthController extends Controller
     public function logout()
     {
         Auth::logout();
-
         return redirect('/login'); // Redirect to the home page or any desired URL after logout
     }
 }

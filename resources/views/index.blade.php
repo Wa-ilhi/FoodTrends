@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @livewireStyles
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2"></script>
 </head>
+@extends('layouts.main')
+
+@section('content')
 
 <body>
-    @extends('layouts.main')
-
-    @section('content')
-
     <div class="container px-4 pt-5">
+        <div class="col">
+            <livewire:search-dropdown>
+        </div>
+
+
 
         <div class="popular-cuisines pt-5">
 
@@ -43,8 +49,7 @@
 
     @endsection
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-
+    @yield('scripts')
 </body>
 
 </html>

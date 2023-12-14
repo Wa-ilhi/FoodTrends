@@ -7,7 +7,7 @@
             <img src="{{ asset('/image/foodlogo.png') }}" width="100" height="100" alt="Custom Logo">
         </x-slot>
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            {{ __('We\'ve email you the verification link. Kindly go to your inboxes.') }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
