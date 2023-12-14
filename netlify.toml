@@ -1,7 +1,7 @@
 # Build settings
 [build]
-  base = "public"
-  publish = "public"
+  base = "/opt/build/repo/public/index.php"
+  publish = "/opt/build/repo/public/index.php"
   command = "php index.php"
   functions = "functions"
 
