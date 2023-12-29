@@ -21,14 +21,14 @@ class GoogleAuthController extends Controller
             $user = User::where('google_id', $google_user->getId())->first();
 
             if (!$user) {
-                // Check if user already exists by email
+
                 $existingUser = User::where('email', $google_user->getEmail())->first();
 
                 if ($existingUser) {
-                    // User already exists, log them in
+
                     Auth::login($existingUser);
                 } else {
-                    // Create a new user
+
                     $new_user = User::create([
                         'name' => $google_user->getName(),
                         'email' => $google_user->getEmail(),
